@@ -1,190 +1,220 @@
-/* Scheduler.module.css */
+/* app/components/Scheduler.module.css */
 
+/* 컨테이너 및 레이아웃 */
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #dbeafe 0%, #c7d2fe 100%);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .wrapper {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-/* 헤더 스타일 */
+/* 헤더 */
 .header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 30px;
   text-align: center;
-  margin-bottom: 2rem;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
-  color: #6b7280;
   font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 300;
 }
 
 /* 컨트롤 패널 */
 .controlPanel {
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  padding: 30px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
 }
 
 .controlFlex {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
-}
-
-@media (min-width: 640px) {
-  .controlFlex {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .dateWrapper {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .dateIcon {
-  font-size: 1.5rem;
-  color: #2563eb;
+  font-size: 1.2rem;
 }
 
 .dateInput {
-  font-size: 1.125rem;
-  font-weight: 600;
-  border: 2px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  outline: none;
-  transition: border-color 0.2s;
+  border: none;
+  font-size: 1rem;
+  color: #333;
+  background: transparent;
+  cursor: pointer;
 }
 
 .dateInput:focus {
-  border-color: #3b82f6;
+  outline: none;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.addButton, .refreshButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .addButton {
-  background: #2563eb;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .addButton:hover {
-  background: #1d4ed8;
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.refreshButton {
+  background: white;
+  color: #666;
+  border: 2px solid #e0e0e0;
+}
+
+.refreshButton:hover {
+  background: #f8f8f8;
+  border-color: #d0d0d0;
+}
+
+.addButton:disabled, .refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* 날짜 표시 */
 .dateDisplay {
-  text-align: center;
-  margin-bottom: 1.5rem;
+  padding: 20px 30px;
+  background: white;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .currentDate {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1f2937;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
 }
 
 /* 이벤트 컨테이너 */
 .eventsContainer {
+  padding: 30px;
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  min-height: 400px;
 }
 
+/* 빈 상태 */
 .emptyState {
   text-align: center;
-  padding: 3rem 0;
+  padding: 60px 20px;
+  color: #888;
 }
 
 .emptyIcon {
   font-size: 4rem;
-  margin-bottom: 1rem;
-  opacity: 0.4;
+  margin-bottom: 20px;
+  opacity: 0.5;
 }
 
 .emptyText {
-  color: #6b7280;
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+  color: #555;
 }
 
 .emptySubtext {
-  color: #9ca3af;
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.7;
 }
 
 /* 이벤트 목록 */
 .eventsList {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .eventCard {
-  border: 2px solid;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  transition: all 0.2s;
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.eventCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #ddd;
+}
+
+.eventCard.work::before { background: #667eea; }
+.eventCard.personal::before { background: #f093fb; }
+.eventCard.health::before { background: #4facfe; }
+.eventCard.other::before { background: #43e97b; }
 
 .eventCard:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
-}
-
-.eventCard.work {
-  background: #dbeafe;
-  color: #1e40af;
-  border-color: #bfdbfe;
-}
-
-.eventCard.personal {
-  background: #dcfce7;
-  color: #166534;
-  border-color: #bbf7d0;
-}
-
-.eventCard.health {
-  background: #fee2e2;
-  color: #991b1b;
-  border-color: #fecaca;
-}
-
-.eventCard.other {
-  background: #f3f4f6;
-  color: #374151;
-  border-color: #d1d5db;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-color: #d0d0d0;
 }
 
 .eventContent {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 20px;
 }
 
 .eventInfo {
@@ -194,262 +224,344 @@
 .eventHeader {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
 .eventTitle {
+  font-size: 1.1rem;
   font-weight: 600;
-  font-size: 1.125rem;
+  color: #333;
+  flex: 1;
 }
 
 .eventTime {
-  background: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  color: #666;
+  background: #f5f5f5;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
 }
 
 .eventDescription {
-  font-size: 0.875rem;
-  margin-left: 1.75rem;
-  opacity: 0.8;
-  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 0.95rem;
+  margin: 8px 0;
+  line-height: 1.4;
 }
 
 .eventCategory {
-  margin-left: 1.75rem;
+  margin-top: 12px;
 }
 
 .categoryTag {
-  background: white;
-  padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  opacity: 0.75;
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #f0f0f0;
+  color: #666;
+  font-weight: 500;
 }
 
 .eventActions {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .actionButton {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  width: 36px;
+  height: 36px;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
-  background: transparent;
-}
-
-.editButton:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.deleteButton:hover {
-  background: #fecaca;
-  color: #dc2626;
-}
-
-/* 모달 스타일 */
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  z-index: 50;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.editButton {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.editButton:hover {
+  background: #bbdefb;
+  transform: scale(1.05);
+}
+
+.deleteButton {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.deleteButton:hover {
+  background: #ffcdd2;
+  transform: scale(1.05);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 모달 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
 }
 
 .modal {
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
   width: 100%;
-  max-width: 28rem;
-  animation: modalSlideIn 0.2s ease-out;
-}
-
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -20px, 0) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 24px 30px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
 }
 
 .modalTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
 }
 
 .closeButton {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  width: 32px;
+  height: 32px;
   border: none;
+  background: #f0f0f0;
+  border-radius: 8px;
   cursor: pointer;
-  background: transparent;
-  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
 }
 
 .closeButton:hover {
-  background: #f3f4f6;
+  background: #e0e0e0;
 }
 
 .modalBody {
-  padding: 1.5rem;
+  padding: 30px;
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
 .formLabel {
   display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #374151;
-  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
 }
 
 .formInput {
   width: 100%;
-  border: 2px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  outline: none;
-  transition: border-color 0.2s;
+  padding: 12px 16px;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
 }
 
 .formInput:focus {
-  border-color: #3b82f6;
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .formTextarea {
+  min-height: 80px;
   resize: vertical;
-  min-height: 4rem;
+  font-family: inherit;
 }
 
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 20px;
 }
 
 .formActions {
   display: flex;
-  gap: 0.75rem;
-  padding-top: 1rem;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
 }
 
 .submitButton {
   flex: 1;
-  background: #2563eb;
-  color: white;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  border: none;
-  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 8px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .submitButton:hover {
-  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 .cancelButton {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #e5e7eb;
-  background: transparent;
-  border-radius: 0.5rem;
-  font-weight: 500;
+  padding: 14px 24px;
+  background: white;
+  color: #666;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .cancelButton:hover {
-  background: #f9fafb;
+  background: #f8f8f8;
+  border-color: #d0d0d0;
+}
+
+.submitButton:disabled, .cancelButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 로딩 오버레이 */
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.loadingSpinner {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #666;
 }
 
 /* 반응형 디자인 */
-@media (max-width: 640px) {
-  .wrapper {
-    padding: 1rem;
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
   }
-  
+
+  .wrapper {
+    border-radius: 12px;
+  }
+
+  .header {
+    padding: 30px 20px;
+  }
+
   .title {
     font-size: 2rem;
   }
-  
+
   .controlPanel {
-    padding: 1rem;
+    padding: 20px;
   }
-  
+
+  .controlFlex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .buttonGroup {
+    justify-content: center;
+  }
+
+  .dateDisplay {
+    padding: 15px 20px;
+  }
+
   .eventsContainer {
-    padding: 1rem;
+    padding: 20px;
   }
-  
+
+  .eventCard {
+    padding: 16px;
+  }
+
   .eventContent {
     flex-direction: column;
-    gap: 1rem;
+    gap: 12px;
   }
-  
+
   .eventActions {
     align-self: flex-end;
   }
-}
 
-/* 다크 모드 지원 */
-@media (prefers-color-scheme: dark) {
-  .container {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  .modalOverlay {
+    padding: 10px;
   }
-  
-  .controlPanel,
-  .eventsContainer,
+
   .modal {
-    background: #1f2937;
+    border-radius: 12px;
   }
-  
-  .title,
-  .currentDate,
-  .modalTitle {
-    color: #f9fafb;
+
+  .modalHeader {
+    padding: 20px;
   }
-  
-  .subtitle,
-  .emptyText {
-    color: #d1d5db;
+
+  .modalBody {
+    padding: 20px;
   }
-  
-  .dateInput,
-  .formInput {
-    background: #374151;
-    border-color: #4b5563;
-    color: #f9fafb;
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  
-  .eventTime,
-  .categoryTag {
-    background: #374151;
+
+  .formActions {
+    flex-direction: column;
   }
 }
